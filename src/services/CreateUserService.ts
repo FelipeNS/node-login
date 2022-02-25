@@ -7,10 +7,6 @@ export class CreateUserService {
   ) {}
 
   async execute(data: ICreateUserDTO) {
-    try {
-      return this.userRepository.store(data);
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    return this.userRepository.store(data);
   }
 }

@@ -12,20 +12,14 @@ export class UserController {
 
     const passwordHashed = await hash(password, 8);
 
-    try {
-      const user = await this.createUserService.execute({
-        name,
-        email,
-        password: passwordHashed
-      });
+    const user = await this.createUserService.execute({
+      name,
+      email,
+      password: passwordHashed
+    });
 
-      delete user.password;
+    delete user.password;
 
-      return response.status(201).json(user);
-    } catch (error) {
-      return response.status(500).json({
-        message: error.message,
-      });
-    }
+    return response.status(201).json(user);
   }
 }
