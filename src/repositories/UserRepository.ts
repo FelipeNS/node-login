@@ -1,3 +1,4 @@
+import { sign } from "jsonwebtoken";
 import { getRepository } from "typeorm";
 import { uuid } from "uuidv4";
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
@@ -24,6 +25,13 @@ export class UserRepository implements IUser {
 
     try {
       await repository.save(user);
+      
+      user.token = sign({}, process.env.JWT_KEY, {
+        subject: user.id,
+        expiresIn: '1h'
+      });
+
+      delete user.password;
       
       return user;
     } catch (error) {

@@ -18,8 +18,6 @@ export class UserController {
       password: passwordHashed
     });
 
-    delete user.password;
-
     return response.status(201).json(user);
   }
 }

@@ -16,4 +16,6 @@ export class User {
 
   @Column()
   avatar: string;
+
+  token: string;
 }
