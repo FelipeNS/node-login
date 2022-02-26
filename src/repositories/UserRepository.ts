@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { getRepository } from "typeorm";
 import { uuid } from "uuidv4";
@@ -15,11 +16,13 @@ export class UserRepository implements IUser {
       throw new Error('User already exists');
     }
 
+    const passwordHashed = await hash(password, 8);
+
     const user = repository.create({
       id: uuid(),
       name,
       email,
-      password,
+      password: passwordHashed,
       avatar: 'https://i.pravatar.cc/400',
     });
 
