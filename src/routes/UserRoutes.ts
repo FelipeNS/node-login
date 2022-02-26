@@ -7,7 +7,7 @@ userRouter.post('/', (request, response) => {
   return userController.store(request, response);
 });
 
-userRouter.get('/auth', (request, response) => {
+userRouter.post('/auth', (request, response) => {
   return authController.login(request, response);
 });
 
