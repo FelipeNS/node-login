@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "typeorm": "tsnd node_modules/.bin/typeorm",
-    "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+    "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
